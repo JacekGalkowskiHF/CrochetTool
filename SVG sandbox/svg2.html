@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My first SVG</h1>
+
+<svg width="800" height="500" style="border : 1px black solid">
+   <circle cx="200" cy="300" r="5" stroke-width="0" fill="yellow" />
+   <circle cx="600" cy="300" r="5" stroke-width="0" fill="yellow" />
+   <circle cx="400" cy="100" r="5" stroke-width="0" fill="orange" />
+   <path d="M 200 300 q 200 -200 400 0" stroke="blue" stroke-width="3" fill="none" />
+   <path d="M 200 300 c 200 -200 200 -200 400 0" stroke="green" stroke-width="3" fill="none" />
+   
+   <path id="my_path" d="M 20,20 C 40,40 80,40 100,20" fill="transparent" />
+<text>
+  <textPath xlink:href="#my_path">This text follows a curve.</textPath>
+</text>
+Sorry, your browser does not support inline SVG.
+</svg> 
+ 
+</body>
+</html>

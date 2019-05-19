@@ -1,0 +1,46 @@
+stitch creation sequence notation
+
+definition format:
+NAME : (arg1 | null ) [arg2 [arg 3 [arg 4 ..]]]
+
+RULE 1: all newly created nodes and links are registered in the context stitch and its project
+RULE 2: "stack" contains both the commands as well as the stitches worked on the "needle"
+RULE 3: "queue" contains all stitches passed to the constructor as "argOtherHooksę 
+
+MAKE NODE_TYPE
+1. X :=  new stitchNode of type NODE_TYPE
+2. pushes X to needle
+
+TAKE null
+1. x := pops a stitchNode form the queue
+2. pushes X to needle
+
+FWD LINK_TYPE NODE_TYPE
+1. X := pop a stitch  form needle
+2. Y := new stitchNode of type NODE_TYPE
+3. L := new stitchLink of type NODE_TYPE between X and Y (from X to Y)
+4. push Y to needle
+
+BCK LINK_TYPE NODE_TYPE
+same as "FWD" but the link is form Y to X (but still only Y is pushed to stack)
+
+SAVE
+1. X := pops a stitchNode form the queue
+2. pushes X (reference) to queue
+3. pushes X (back) to needle
+
+LEFT
+1. X := pop a stitch  form needle
+2. Y := pop a stitch  form needle
+3. merge X into Y
+4. push Y to needle
+
+RIGHT
+1. X := pop a stitch  form needle
+2. Y := pop a stitch  form needle
+3. merge Y into X
+4. push X to needle
+
+EXAMPLE
+"double-crochet two together"
+TAKE FWD external start FWD default loop TAKE BCK external hook FWD default loop FWD default struct FWD default loop TAKE BCK external hook FWD default loop FWD default struct FWD default finish LEFT LEFT

@@ -1,0 +1,88 @@
+// Error types for the "Vector" class
+ErrorHandler.registerNewError( 'Vector 001', 'Vector::Vector', 'Not enough parameters to construct a Vector.' );
+ErrorHandler.registerNewError( 'Vector 002', 'Vector::Vector', 'Cannot create a Vector from less than two (2) coordinates.' );
+ErrorHandler.registerNewError( 'Vector 003', 'Vector::Vector', 'Cannot create a Vector from non-numerical coordinates.' );
+ErrorHandler.registerNewError( 'Vector 004', 'Vector::Vector', 'Cannot create a Vector from "$1". Two numbers or an array needed.' );
+ErrorHandler.registerNewError( 'Vector 005', 'Vector::moveByVector', 'Cannot move a Vector by "$1".' );
+ErrorHandler.registerNewError( 'Vector 006', 'Vector::moveByVector', 'Cannot move a Vector by "$1".' );
+ErrorHandler.registerNewError( 'Vector 007', 'Vector::dotProduct', ' Cannot move a Vector by "$1".' );
+ErrorHandler.registerNewError( 'Vector 008', 'Vector::dotProduct', ' Cannot perform a scalar multiplication of a Vector and a "$1".' );
+ErrorHandler.registerNewError( 'Vector 009', 'Vector::scale', ' Cannot scale a Vector by "$1".' );
+ErrorHandler.registerNewError( 'Vector 010', 'Vector::rotate', 'Cannot rotate a Vector by "$1".' );
+ErrorHandler.registerNewError( 'Vector 011', 'Vector::getProjectionOf', 'Not enough arguments.' );
+ErrorHandler.registerNewError( 'Vector 012', 'Vector::getProjectionOf', ' Cannot project "$1" onto a vector.' );
+ErrorHandler.registerNewError( 'Vector 013', 'Vector::setLenght', 'Cannot set length of a Vector to a non-numerical value.' );
+
+// Error types for the "CrochetNode" class
+ErrorHandler.registerNewError( 'CrochetNode 001', 'CrochetNode::CrochetNode', 'not enough arguments to create a node' );
+ErrorHandler.registerNewError( 'CrochetNode 002', 'CrochetNode::CrochetNode', 'cannot create a node without valid context. CrochetStitch or crochetProject required.' );
+ErrorHandler.registerNewError( 'CrochetNode 003', 'CrochetNode::CrochetNode', 'invalid node type. String required' );
+ErrorHandler.registerNewError( 'CrochetNode 004', 'CrochetNode::CrochetNode', 'invalid node type: "$1"' );
+ErrorHandler.registerNewError( 'CrochetNode 005', 'CrochetNode::CrochetNode( context, nodeType, [x, y] )', 'cannot set initial position of a node to "$1".' );
+ErrorHandler.registerNewError( 'CrochetNode 009', 'CrochetNode::CrochetNode( context, nodeType, [x, y] )', 'cannot set initial position of a node with less than two coordinates.' );
+ErrorHandler.registerNewError( 'CrochetNode 006', 'CrochetNode::CrochetNode( context, nodeType, fromNode, alongLink, {linkType|linkLength} )', 'cannot set initial coordinates as a shift from "$1". CrochetNode required' );
+ErrorHandler.registerNewError( 'CrochetNode 007', 'CrochetNode::CrochetNode( context, nodeType, fromNode, alongLink, {linkType|linkLength} )', 'cannot set initial coordinates as a shift in line with "$1". CrochetLink required' );
+ErrorHandler.registerNewError( 'CrochetNode 008', 'CrochetNode::CrochetNode( context, nodeType, fromNode, alongLink, {linkType|linkLength} )', 'cannot set initial coordinates as a shift by "$1". Number or string required' );
+ErrorHandler.registerNewError( 'CrochetNode 009', 'CrochetNode::CrochetNode( context, nodeType, fromNode, alongLink, {linkType|linkLength} )', 'cannot set initial coordinates with new link length specified as "$1"' );
+ErrorHandler.registerNewError( 'CrochetNode 010', 'CrochetNode::CrochetNode( context, nodeType, nodeArray, prevLink, {linkType1|linkLength1}, {linkType2|linkLength2} )', 'cannot set initial coordinates as a counter weight to "$1". An array of crocehtNode is required' );
+ErrorHandler.registerNewError( 'CrochetNode 011', 'CrochetNode::CrochetNode( context, nodeType, nodeArray, prevLink, {linkType1|linkLength1}, {linkType2|linkLength2} )', 'cannot set initial coordinates in relation to "$1". A CrochetLink is required' );
+ErrorHandler.registerNewError( 'CrochetNode 012', 'CrochetNode::CrochetNode( context, nodeType, nodeArray, prevLink, {linkType1|linkLength1}, {linkType2|linkLength2} )', 'cannot set initial coordinates in relation to "$1". Number or string required' );
+ErrorHandler.registerNewError( 'CrochetNode 013', 'CrochetNode::CrochetNode( context, nodeType, nodeArray, prevLink, {linkType1|linkLength1}, {linkType2|linkLength2} )', 'cannot set initial coordinates in relation to "$1". Number or string required' );
+ErrorHandler.registerNewError( 'CrochetNode 014', 'CrochetNode::CrochetNode( context, nodeType, nodeArray, prevLink, {linkType1|linkLength1}, {linkType2|linkLength2} )', 'cannot set initial coordinates if link1 length is specified as "$1". Valid Link type code required' );
+ErrorHandler.registerNewError( 'CrochetNode 015', 'CrochetNode::CrochetNode( context, nodeType, nodeArray, prevLink, {linkType1|linkLength1}, {linkType2|linkLength2} )', 'cannot set initial coordinates if link2 length is specified as "$1". Valid Link type code required' );
+ErrorHandler.registerNewError( 'CrochetNode 016', 'CrochetNode::CrochetNode( context, nodeType, nodeArray, prevLink, {linkType1|linkLength1}, {linkType2|linkLength2} )', 'cannot set initial coordinates as a counter weight. An array of all CrochetNode elements is required' ); 
+ErrorHandler.registerNewError( 'CrochetNode 017', 'CrochetNode::CrochetNode', 'wrong number of arguments : $1' );
+ErrorHandler.registerNewError( 'CrochetNode 018', 'CrochetNode::CrochetNode( context, nodeType, fromNode, prevLink, {linkType|linkLength})', 'cannot create a node by extension, if fromNode is not one of the nodes connected by prevLink' );
+ErrorHandler.registerNewError( 'CrochetNode 019', 'CrochetNode::getNeighborLinks', 'wrong number of arguments ($1)' );
+ErrorHandler.registerNewError( 'CrochetNode 020', 'CrochetLink::getNeighborLinks', 'link direction must be specified as a string ("$1")' );
+ErrorHandler.registerNewError( 'CrochetNode 021', 'CrochetLink::getNeighborLinks', 'link direction must be set as "IN or "OUT" ("$1")' );
+ErrorHandler.registerNewError( 'CrochetNode 022', 'CrochetNode::getNeighborNodes', 'wrong number of arguments ($1)' );
+ErrorHandler.registerNewError( 'CrochetNode 024', 'CrochetLink::getNeighborNodes', 'link direction must be specified as a string ("$1")' );
+ErrorHandler.registerNewError( 'CrochetNode 025', 'CrochetLink::getNeighborNodes', 'link direction must be set as "IN or "OUT" ("$1")' );
+ErrorHandler.registerNewError( 'CrochetNode 026', 'CrochetNode::CrochetNode( context, type, fromNode, linkType|link Length )', 'cannot set initial coordinates as a shift from "$1". CrochetNode required' );
+ErrorHandler.registerNewError( 'CrochetNode 027', 'CrochetNode::CrochetNode( context, type, fromNode, linkType|link Length )', 'cannot set initial coordinates as a shift by "$1". Number or string required' );
+ErrorHandler.registerNewError( 'CrochetNode 028', 'CrochetNode::CrochetNode( context, type, fromNode, linkType|link Length )', 'cannot set initial coordinates with new link length specified as "$1"' );
+ErrorHandler.registerNewError( 'CrochetNode 029', 'CrochetNode::getNeighborLinks', 'invalid filtering link Type ("$1")' );
+ErrorHandler.registerNewError( 'CrochetNode 030', 'CrochetNode::getNeighborNodes', 'invalid filtering node Type ("$1")' );
+ErrorHandler.registerNewError( 'CrochetNode 031', 'Crochetnode::getNeighborNodes', 'invalid filtering link Type ("$1")' );
+ErrorHandler.registerNewError( 'CrochetNode 032', 'CrochetNode::CrochetNode( context, nodeType, [x, y] )', 'cannot set initial position of a node with non-numerical coordinates.' );
+ErrorHandler.registerNewError( 'CrochetNode 033', 'CrochetNode::mergeWithNode', 'cannot merge with instance of $1' );
+ErrorHandler.registerNewError( 'CrochetNode 034', 'CrochetNode::mergeWithNode', 'cannot merge with self' );
+
+// Error types for the "CrochetLink" class
+ErrorHandler.registerNewError( 'CrochetLink 001', 'CrochetLink::IS_VALID_TYPE_CODE', 'Invalid type code: "$1"' );
+ErrorHandler.registerNewError( 'CrochetLink 002', 'CrochetLink::crochetLink', 'Not enough arguments to create a link' );
+ErrorHandler.registerNewError( 'CrochetLink 003', 'CrochetLink::CrochetLink', 'Cannot create a node without valid context. CrochetStitch or CrochetProject required.' ); 
+ErrorHandler.registerNewError( 'CrochetLink 004', 'CrochetLink::CrochetLink', 'Invalid link type. String required.' );
+ErrorHandler.registerNewError( 'CrochetLink 005', 'CrochetLink::CrochetLink', 'Invalid link type: "$1".' );
+ErrorHandler.registerNewError( 'CrochetLink 006', 'CrochetLink::CrochetLink', 'Cannot create a link from $1. CrochetNode required.');
+ErrorHandler.registerNewError( 'CrochetLink 007', 'CrochetLink::crochetLink', 'Cannot create a link to "$1". CrochetNode required.' );
+ErrorHandler.registerNewError( 'CrochetLink 008', 'CrochetLink::CrochetLink', 'Source and target must be two different nodes!' );
+ErrorHandler.registerNewError( 'CrochetLink 009', 'CrochetLink::getOtherEnd', 'Cannot determine other end of the link if the first end is given as a "$1". CrochetNode required.' );
+ErrorHandler.registerNewError( 'CrochetLink 010', 'CrochetLink::replaceNode', 'Given "replaced" Node ($1) is neither of the nodes connected by the changed Link ($2)' );
+ErrorHandler.registerNewError( 'CrochetLink 011', 'CrochetLink::replaceNode', 'Given "replacement" Node ($1) is already part of the changed Link ($2)' );
+ErrorHandler.registerNewError( 'CrochetLink 012', 'CrochetLink::replaceNode', 'Cannot replace nodes in a link, of both nodes do not come from the same stitch.' );
+
+// Error types for the "CrochetStitch" class
+ErrorHandler.registerNewError( 'CrochetStitch 001', 'CrochetStitch::CrochetStitch', 'Not enough arguments to create a stitch' );
+ErrorHandler.registerNewError( 'CrochetStitch 002', 'CrochetStitch::CrochetStitch', 'cannot create a stitch without valid context. crochetProject required.' );
+ErrorHandler.registerNewError( 'CrochetStitch 003', 'CrochetStitch::CrochetStitch', 'invalid stitch type. String required' );
+ErrorHandler.registerNewError( 'CrochetStitch 004', 'CrochetStitch::CrochetStitch', 'invalid stitch type: "$1"' );
+ErrorHandler.registerNewError( 'CrochetStitch 005', 'CrochetStitch::REQUIRES_PREVIOUS', 'invalid stitch type: "$1"' );
+ErrorHandler.registerNewError( 'CrochetStitch 006', 'CrochetStitch::REQUIRES_PREVIOUS', 'invalid stitch type. String required' );
+ErrorHandler.registerNewError( 'CrochetStitch 007', 'CrochetStitch::CrochetStitch', 'cannot create a stitch of type "$1" without a previous node specified' );
+ErrorHandler.registerNewError( 'CrochetStitch 008', 'CrochetStitch::REQUIRED_HOOKS', 'invalid stitch type: "$1"' );
+ErrorHandler.registerNewError( 'CrochetStitch 009', 'CrochetStitch::REQUIRED_HOOKS', 'invalid stitch type. String required' );
+ErrorHandler.registerNewError( 'CrochetStitch 010', 'CrochetStitch::CrochetStitch', 'cannot create a stitch of type "$1" - invalid previous node type "$2"' );
+ErrorHandler.registerNewError( 'CrochetStitch 011', 'CrochetStitch::CrochetStitch', 'cannot create a stitch of type "$1" - an Array of "other Hooks" expected' );
+ErrorHandler.registerNewError( 'CrochetStitch 012', 'CrochetStitch::CrochetStitch', 'cannot create a stitch of type "$1" - not enough hooks specified ($2)' );
+ErrorHandler.registerNewError( 'CrochetStitch 013', 'CrochetStitch::CrochetStitch', 'cannot create a stitch of type "$1" - not all previous Hooks are of type crochetNode' );
+ErrorHandler.registerNewError( 'CrochetStitch 014', 'CrochetStitch::GET_SEQUENCE', 'invalid stitch type. String required' );
+ErrorHandler.registerNewError( 'CrochetStitch 015', 'CrochetStitch::GET_SEQUENCE', 'invalid stitch type: "$1"' );
+ErrorHandler.registerNewError( 'CrochetStitch 016', 'CrochetStitch::CrochetStitch', 'unrecognized creation sequence commant: "$1"' );
+ErrorHandler.registerNewError( 'CrochetStitch 017', 'CrochetStitch::getNodes', 'Too many arguments ($1)' );
+ErrorHandler.registerNewError( 'CrochetStitch 018', 'CrochetStitch::getNodes', 'Invalid node type "$1"' );
+ErrorHandler.registerNewError( 'CrochetStitch 019', 'CrochetStitch::getLinks', 'Too many arguments ($1)' );
+ErrorHandler.registerNewError( 'CrochetStitch 020', 'CrochetStitch::getLinks', 'Invalid link type "$1"' );
+ErrorHandler.registerNewError( 'CrochetStitch 021', 'CrochetStitch::PARSE_SEQUENCE', 'cannot parse command that is not a String or CrochetNode' );
+ErrorHandler.registerNewError( 'CrochetStitch 021', 'CrochetStitch::PARSE_SEQUENCE', 'unknown command $1' );
