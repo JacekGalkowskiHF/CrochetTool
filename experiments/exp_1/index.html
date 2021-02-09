@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>objecto</title>
+        <script src="https://unpkg.com/vue@3.0.5/dist/vue.global.js"></script>
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    </head>
+  <body>
+
+    <!-- place to mount apps -->
+    <ul>
+        <li>hover to start simulation</li>
+        <li>un-hover to stop it</li>
+        <li>click to add a new node</li>
+    </ul>
+    <div id="app" >
+        <p>max r : {{maxr}}</p>
+        <svg viewBox="-250 -250 500 500" width="500" height="500" style="border: solid 1px red" @click="tick" @mouseenter="startsim" @mouseleave="stopsim">
+            <circle v-for="(n, i) in hist" :cx="n.x" :cy="n.y" :r="i/40" fill="black"  :style="{opacity : i/200}"></circle>
+            <circle v-for="n in nodes" :cx="n.x" :cy="n.y" r=5 :fill="n.color"></circle>
+        </svg>
+    </div>
+
+    <!-- Import App -->
+    <script src="./main.js">;</script>
+
+    <!-- mount App -->
+    <script type="text/javascript">
+      const mountedApp = app.mount('#app');
+    </script>
+
+  </body>
+</html>
