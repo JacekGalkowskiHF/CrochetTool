@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>crochet node</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {crochetNode} from '../crochetNode.js'
+          import {crochetNodeOrigin} from '../crochetNodeOrigin.js'
+          import {crochetNodeStart} from '../crochetNodeStart.js'
+          import {crochetNodeFinish} from '../crochetNodeFinish.js'
+          import {crochetNodeLoop} from '../crochetNodeLoop.js'
+          import {crochetNodeHook} from '../crochetNodeHook.js'
+          import {crochetNodeStruct} from '../crochetNodeStruct.js'
+          import {crochetNodeCHSpaceStart} from '../crochetNodeCHSpaceStart.js'
+          import {crochetNodeCHSpaceCont} from '../crochetNodeCHSpaceCont.js'
+
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          let n = new crochetNode("A", [1,2])
+          log(`${n} : type ${n.getType()}`)
+
+          n = new crochetNode("B", [2,3])
+          log(`${n} : array ${n.getArray()} `)
+
+          n = new crochetNodeOrigin("X", [9,9])
+          log(`${n} : vector  ${n.getVector()} `)
+
+          n = new crochetNodeStart("Y", [9,9])
+          log(`${n} : neighbor count ${n.getNeighborCount()} `)
+
+          n = new crochetNodeFinish("Y", [9,9])
+          let n2 = new crochetNode("A", [1,2])
+          let n3 = new crochetNode("A", [1,2])
+
+          let l1 = {source: n, target: n2}
+          let l2 = {source: n, target: n3}
+          n.registerNeighbor(l1).registerNeighbor(l2)
+          n2.registerNeighbor(l1)
+          n3.registerNeighbor(l2)
+          log(`${n} : neighbors ${n.getNeighborNodes()} `)
+          log(`${n2} : neighbors ${n2.getNeighborNodes()} `)
+          log(`${n3} : neighbors ${n3.getNeighborNodes()} `)
+
+          n = new crochetNodeLoop("Y", [9,9])
+          l1 = {source: n, target: n2, getType : ()=>'x'}
+          n.registerNeighbor(l1)
+          log(`${n} : links ${n.getNeighborLinks()[0].source.getVector()} `)
+
+          n = new crochetNodeLoop("Y", [9,9])
+          log(`${n} : loopable ${n.isLoopable()} `)
+
+          n = new crochetNodeStruct("Y", [9,9])
+          log(`${n} : string ${n.toString()} `)
+
+          n = new crochetNodeCHSpaceStart("Y", [9,9])
+          log(`${n} : string ${n.getColor()} `)
+
+          n = new crochetNodeCHSpaceCont("Y", [9,9])
+          log(`${n} : string ${n.getDesc()} `)
+
+
+      </script>
+  </body>
+</html>

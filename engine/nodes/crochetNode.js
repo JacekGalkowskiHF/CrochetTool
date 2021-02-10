@@ -1,5 +1,5 @@
-import {idGenerator} from './helpers.js'
-import {vec2d} from './vectorClass.js'
+import {idGenerator} from '../misc/helpers.js'
+import {vec2d} from '../misc/vector.js'
 
 
 class crochetNode {

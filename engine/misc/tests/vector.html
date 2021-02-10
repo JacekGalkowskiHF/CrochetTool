@@ -9,7 +9,7 @@
 
       <script type ="module">
 
-          import {idGenerator} from './helpers.js'
+          import {vec2d} from '../vector.js'
 
           function log(a) {
               let t = document.getElementById('x')
@@ -18,14 +18,13 @@
               t.innerHTML += '\n'
           }
 
-          let v1 = new idGenerator("A")
-          let v2 = new idGenerator("B")
-          log(`A : ${v1.next()}`)
-          log(`A : ${v1.next()}`)
-          log(`A : ${v1.next()}`)
-          log(`B : ${v2.next()}`)
-          log(`B : ${v2.next()}`)
-          log(`A : ${v1.next()}`)
+          let v1 = new vec2d(0,1)
+          let v2 = new vec2d(2,0)
+          log(`v1 : ${v1}`)
+          log(`v2 : ${v2}`)
+          let v3 =v1.add(v2)
+          log(`v1 as array : ${v1.getArray()}`)
+          log(`v1 + v2 : ${v3}`)
 
       </script>
   </body>
