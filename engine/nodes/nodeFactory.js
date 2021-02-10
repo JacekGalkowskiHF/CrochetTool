@@ -1,4 +1,5 @@
 import vec2d from './vectorClass.js'
+import {}
 
 class nodeFactoryClass {
 

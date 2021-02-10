@@ -9,8 +9,7 @@
 
       <script type ="module">
 
-          import {vec2d} from '../vectorClass.js'
-          import {crochetNode} from '../crochetNodeClass.js'
+          import {vec2d} from './vectorClass.js'
 
           function log(a) {
               let t = document.getElementById('x')
@@ -19,16 +18,14 @@
               t.innerHTML += '\n'
           }
 
-          log`qwef`
           let v1 = new vec2d(0,1)
           let v2 = new vec2d(2,0)
           log(`v1 : ${v1}`)
           log(`v2 : ${v2}`)
           let v3 =v1.add(v2)
-          log(v1.getArray())
+          log(`v1 as array : ${v1.getArray()}`)
           log(`v1 + v2 : ${v3}`)
-          let n = new crochetNode("A", [1,2])
-          log(n)
+
       </script>
   </body>
 </html>
