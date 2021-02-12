@@ -1,40 +1,25 @@
-class nodeFactoryClass {
+import {factoryClass} from '../misc/factory.js'
+import {crochetNode} from './crochetNode.js'
 
-  constructor() {
-    this.nodeTypes = new Map()
-  }
+let crochetNodeFactory = new factoryClass(crochetNode, "getType")
 
-  registerNodeType(nodeClass){
-    this.nodeTypes.set(nodeClass.getType(), nodeClass)
-    return this
-  }
+import {crochetNodeOrigin} from './crochetNodeOrigin.js'
+import {crochetNodeStart} from './crochetNodeStart.js'
+import {crochetNodeFinish} from './crochetNodeFinish.js'
+import {crochetNodeHook} from './crochetNodeHook.js'
+import {crochetNodeLoop} from './crochetNodeLoop.js'
+import {crochetNodeStruct} from './crochetNodeStruct.js'
+import {crochetNodeCHSpaceStart} from './crochetNodeCHSpaceStart.js'
+import {crochetNodeCHSpaceCont} from './crochetNodeCHSpaceCont.js'
 
-  getNode(argType, argContext, argCoordinates){
-    let cls = this.nodeTypes.get(argType)
-    if (typeof cls == "undefined") throw `nodeFactory : invalid node type ${argType}`
-    return new cls(argContext, argCoordinates)
-  }
+crochetNodeFactory
+    .registerClass(crochetNodeOrigin)
+    .registerClass(crochetNodeStart)
+    .registerClass(crochetNodeFinish)
+    .registerClass(crochetNodeHook)
+    .registerClass(crochetNodeLoop)
+    .registerClass(crochetNodeStruct)
+    .registerClass(crochetNodeCHSpaceStart)
+    .registerClass(crochetNodeCHSpaceCont)
 
-  getNodeClass(argType){
-    let cls = this.nodeTypes.get(argType)
-    if (typeof cls == "undefined") throw `nodeFactory : invalid node type ${argType}`
-    return cls
-  }
-
-  isValidNodeType(type){
-    return this.nodeTypes.has(type)
-  }
-}
-
-// nodeFactory = new nodeFactoryClass()
-//    .registerNodeType(crochetNode)
-//    .registerNodeType(crochetNodeOrigin)
-//    .registerNodeType(crochetNodeStart)
-//    .registerNodeType(crochetNodeStruct)
-//    .registerNodeType(crochetNodeFinish)
-//    .registerNodeType(crochetNodeLoop)
-//    .registerNodeType(crochetNodeHook)
-//    .registerNodeType(crochetNodeCHSpaceStart)
-//    .registerNodeType(crochetNodeCHSpaceCont)
-//
-// export nodeFactory;
+export {crochetNodeFactory}

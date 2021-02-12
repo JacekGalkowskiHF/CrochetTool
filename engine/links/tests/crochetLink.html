@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>crochet node</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {crochetLink} from '../crochetLink.js'
+          /*import {crochetNodeOrigin} from '../crochetNodeOrigin.js'
+          import {crochetNodeStart} from '../crochetNodeStart.js'
+          import {crochetNodeFinish} from '../crochetNodeFinish.js'
+          import {crochetNodeLoop} from '../crochetNodeLoop.js'
+          import {crochetNodeHook} from '../crochetNodeHook.js'
+          import {crochetNodeStruct} from '../crochetNodeStruct.js'
+          import {crochetNodeCHSpaceStart} from '../crochetNodeCHSpaceStart.js'
+          import {crochetNodeCHSpaceCont} from '../crochetNodeCHSpaceCont.js'
+*/
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          let n1 = {x : 1, y : 2, registerNeighbor: ()=>{}}
+          let n2 = {x : -1, y : 3, registerNeighbor: ()=>{}}
+          let n3 = {x : -5, y : -5, registerNeighbor: ()=>{}}
+
+          let l = new crochetLink("A", n1, n2)
+          log(`${l} : type ${l.getType()}`)
+
+          l = new crochetLink("A", n1, n3)
+          log(`${l} : len ${l.getDefLen()} `)
+          log(`${l} : len ${l.getColor()} `)
+
+
+      </script>
+  </body>
+</html>
