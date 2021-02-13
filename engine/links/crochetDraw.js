@@ -12,7 +12,7 @@ class crochetDraw extends crochetLink{
 
     // add more stuff, specifically needed for displaying
     static getPathDef() {
-        return "l:100,0%"
+        return "l:100,0%;c:1,2:30,40%:50,60%7,8"
     }
     getPathDef() {return this.constructor.getPathDef()}
 

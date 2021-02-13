@@ -24,9 +24,8 @@
           let n3 = {x : -5, y : -5, registerNeighbor: ()=>{}}
 
           let l = new crochetDraw("A", n1, n2)
-          log(l.pathDefVectors[0].cmd)
-          log(l.pathDefVectors[0].params[0].v_perc)
-          log(l.pathDefVectors[0].params[0].v_abs)
+          log(l.getPathDef())
+          console.log(l.pathDefVectors)
 
       </script>
   </body>
