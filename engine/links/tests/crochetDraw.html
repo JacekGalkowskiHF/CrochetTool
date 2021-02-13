@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>crochet link draw</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {crochetDraw} from '../crochetDraw.js'
+
+
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          let n1 = {x : 1, y : 2, registerNeighbor: ()=>{}}
+          let n2 = {x : -1, y : 3, registerNeighbor: ()=>{}}
+          let n3 = {x : -5, y : -5, registerNeighbor: ()=>{}}
+
+          let l = new crochetDraw("A", n1, n2)
+          log(l.pathDefVectors[0].cmd)
+          log(l.pathDefVectors[0].params[0].v_perc)
+          log(l.pathDefVectors[0].params[0].v_abs)
+
+      </script>
+  </body>
+</html>

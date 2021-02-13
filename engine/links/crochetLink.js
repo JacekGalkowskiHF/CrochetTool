@@ -38,6 +38,8 @@ class crochetLink{
     this.source = fromNode;
     this.target = toNode;
     this._context = context;
+    //for future: removing nodes form simulation without destrying the objects => ready for u-do action
+    this.is_deleted = false;
 
     // physics
     if (length == undefined) {
@@ -54,6 +56,11 @@ class crochetLink{
   	fromNode.registerNeighbor(this);
 	  toNode.registerNeighbor(this);
 
+  }
+
+  // methods needed for D3JS simulation
+  strength() {
+      return (this.is_deleted) ? 0 : 1;
   }
 
   // *** PUBLIC METHODS ***
