@@ -70,12 +70,12 @@ class crochetDraw extends crochetLink{
                             .map(e => e.trim())       // [ "", "a,a"] | ["", "p,p". ""] | ["", "p,p", "a,a"]
                             .reverse()              // ["a,a", ""] | ["", "p,p". ""] | ["a,a", "p,p", ""]
                             .slice(0,2)             // ["a,a", ""] | ["", "p,p"] | ["a,a", "p,p"]
-                            .map(e => (e=="" ? "0,0" : e)) // ["a,a", "0,0"] | ["0,0", "p,p"] | ["a,a", "p,p"]
-                            .map(e => e
+                            .map(f => (f=="" ? "0,0" : f)) // ["a,a", "0,0"] | ["0,0", "p,p"] | ["a,a", "p,p"]
+                            .map(g => g
                                 .split(",")
-                                .map(e => parseFloat(e))
+                                .map(h => parseFloat(h))
                             )                       // [[ax,ay],[px,py]] etc..
-                            .map(e => new vec2d(e));      // [[vec2d],[vec2d])
+                            .map(i => new vec2d(i));      // [[vec2d],[vec2d])
 
                         // %-vector is given in perc.pts., so...
                         twoVecArray[1] = twoVecArray[1].scale(0.01)

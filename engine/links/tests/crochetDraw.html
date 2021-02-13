@@ -25,7 +25,14 @@
 
           let l = new crochetDraw("A", n1, n2)
           log(l.getPathDef())
-          console.log(l.pathDefVectors)
+          l.pathDefVectors.forEach((command, i) => {
+              log(`cmd : ${command.cmd}`);
+              command.params.forEach((twovector, j) => {
+                  log(` - ${twovector.v_perc.scale(100)} % ${twovector.v_abs}`)
+              });
+
+          });
+
 
       </script>
   </body>
