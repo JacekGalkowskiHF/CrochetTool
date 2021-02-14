@@ -55,8 +55,6 @@ class plotter {
         return {baseOrigin: start, baseLen : baseLen, basePhi: basePhi}
     }
 
-
-
     // *** primitive SVG path (attr. d) command generators ****
 
     // generates SVG path to move pen to links Source point
@@ -126,7 +124,7 @@ class plotter {
         if (!(targetVec instanceof vec2d)) throw`getPathTxt : targetVec must be a vec2d vector`
         if (!(pathDef instanceof Array)) throw`pathDef : targetVec must be an Array of [graphCommand]`
         pathDef = pathDef.filter(e=>(e instanceof graphCommand))
-        console.log(pathDef)
+
         // establish frame of reference
         let base = plotter.getBase(sourceVec, targetVec)
         // * parse the command *
@@ -153,4 +151,4 @@ class plotter {
     }
   }
 
-export {plotter, transformationTwoVector, graphCommand}
+export {transformationTwoVector, graphCommand, plotter}
