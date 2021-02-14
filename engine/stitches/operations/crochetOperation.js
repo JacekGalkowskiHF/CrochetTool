@@ -17,17 +17,17 @@ class crochetOperation {
     if (!(subject instanceof operationSubject)) throw `crochetOperation : needs a valid operationSubject`
     if (!(cmds instanceof Array)) throw `crochetOperation : params must be an array [string]`
     this.params = cmds.filter(e=>(typeof(e)=="string"))        // first argument will be an Array of the operation parameters
-    if (this.params.length < this.minParams()) throw `crochetOperation : not enough parameters for '${this.getCommandName()}'. Expected '${this.minParams()}'`
+    if (this.params.length < this.minParams()) throw `crochetOperation : not enough parameters for '${this.getCommandName()}'. Expected : ${this.minParams()}`
     this.subject = subject  // rest is the subject of the operation - components of the W.I.P. crochetStitch
   }
 
-  getBasicResult() {
+  getBasicResult(newSubject, newNode = false, newLink = false, delNode = false, delLink = false) {
     return {
-        newSubject : this.subject.copy(),
-        newNode : false,
-        newLink : false,
-        delNode: false,
-        delLink: false
+        newSubject : newSubject,
+        newNode : newNode,
+        newLink : newLink,
+        delNode: delNode,
+        delLink: delLink
     }
   }
 
