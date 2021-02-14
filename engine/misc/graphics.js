@@ -79,10 +79,10 @@ class plotter {
             throw `getSVGcmd : not enough vectors in vecArr for command 'a'. Expected 4`
         }
         let dCmd = "a "
-        dCmd += vecArr[0].rot(-base.basePhi).getTxt() + " "    // arc start
-        dCmd += (vecArr[1].phi() / Math.PI * 180) + " "                  // arc major axis rotation
-        dCmd += vecArr[2]._x + " " + vecArr[2]._y + " "             // arc draw flags
-        dCmd += vecArr[3].getTxt()                             // arc end
+        dCmd += vecArr[0].rot(-base.basePhi).getTxt() + " " // arc radii
+        dCmd += ( -vecArr[1].phi() / Math.PI * 180) + " "   // arc major axis rotation
+        dCmd += vecArr[2]._x + " " + vecArr[2]._y + " "     // arc draw flags
+        dCmd += vecArr[3].getTxt()                          // arc end
         return dCmd
     }
 
@@ -124,16 +124,11 @@ class plotter {
         if (!(pathDef instanceof Array)) throw`pathDef : targetVec must be an Array of [graphCommand]`
         pathDef = pathDef.filter(e=>(e instanceof graphCommand))
         console.log(pathDef)
-
         // establish frame of reference
         let base = plotter.getBase(sourceVec, targetVec)
-
         // * parse the command *
-
         // start by moving to link source
         let path = plotter.SVGpathResetPen(base)
-        //console.log(pathDef.length)
-
         // parse each path command
         let pathSteps = pathDef.map(pathCommand=>{
             let vectors = pathCommand.params.map(
@@ -151,11 +146,8 @@ class plotter {
             )
             return pathStepParts.join(" ")
         })
-
         return path += " " + pathSteps.join(" ")
-
     }
-
   }
 
 export {plotter, graphTwoVector, graphCommand}
