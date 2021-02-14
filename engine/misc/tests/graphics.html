@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>graphics</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {plotter} from '../graphics.js'
+          import {graphTwoVector} from '../graphics.js'
+          import {graphCommand} from '../graphics.js'
+          import {vec2d} from '../vector.js'
+
+
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          let base = plotter.getBase(new vec2d(1,1), new vec2d(-1,1))
+          log(base.baseOrigin)
+          log(base.baseLen)
+          log(base.basePhi)
+
+          base = plotter.getBase(new vec2d(1,1), new vec2d(11,1))
+          let abs = new vec2d(1,5)
+          let perc = new vec2d(0.2,0.3)
+          let pt = plotter.calcPathPoint(abs, perc, base)
+          log(pt)
+
+          log(plotter.SVGpathResetPen(base))
+
+          let v1 = new vec2d(1,1)
+          let v2 = new vec2d(2,3)
+          let v3 = new vec2d(-5,4)
+
+          log(plotter.SVGpathGeneric("c", 3, [v1, v2, v3]))
+
+          let tv = new graphTwoVector([new vec2d(1,1), new vec2d(11,1)])
+          log(tv.vAbs)
+
+          let tv1 = new graphTwoVector(new vec2d(1,1), new vec2d(0,0))
+          let tv2 = new graphTwoVector( new vec2d(0,0), new vec2d(2,3))
+          let tv3 = new graphTwoVector(new vec2d(-5,4),new vec2d(7,-8))
+
+          let gc1 = new graphCommand("l", [tv])
+          log(`${gc1.cmd} : [${gc1.params.length}]`)
+          let gc2 = new graphCommand("M", [tv1])
+          let gc3 = new graphCommand("q", [tv1, tv2, tv3] )
+          let gc4 = new graphCommand("a", [tv, tv1, tv2, tv3] )
+
+          let d = plotter.getPathTxt(new vec2d(1,1), new vec2d(-1,1), [gc1, gc2, gc3, gc4])
+          log(d)
+
+
+      </script>
+  </body>
+</html>

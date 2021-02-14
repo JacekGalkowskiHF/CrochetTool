@@ -1,5 +1,8 @@
 import {crochetLink} from './crochetLink.js'
 import {vec2d} from '../misc/vector.js'
+import {plotter} from '../misc/graphics.js'
+import {graphTwoVector} from '../misc/graphics.js'
+import {graphCommand} from '../misc/graphics.js'
 
 class crochetDraw extends crochetLink{
 
@@ -12,21 +15,19 @@ class crochetDraw extends crochetLink{
 
     // add more stuff, specifically needed for displaying
     static getPathDef() {
-        return "l:100,0%;c:1,2:30,40%:50,60%7,8"
+        return "l:100,0%"
     }
     getPathDef() {return this.constructor.getPathDef()}
 
     static getColor() {return "black"}
     getColor() {return this.constructor.getColor()}
 
+    // what a valid path definition string looks like
+    static commandRegEx = /[a-zA-Z\_]+(\ *\:\ *-?[0-9]+\,-?[0-9]+(\%\ *(-?[0-9]+\,-?[0-9]+)?)?)+$/
+
     // given a path definition, transform it into an array of two-vectors used for drawing
     static tokenizeDrawingCommands(pathStr = "") {
 
-        // what path commands are allowed and how manz points they need
-        let allowedCommands = new Map([
-            ["l", 1], ["L", 1], ["M", 1], ["m", 1], ["X", 1],
-            ["a", 4], ["q", 2], ["Q", 2], ["c", 3], ["C", 3]
-        ])
 
         // transform path definition string to an array of single commands
         let commands = pathStr
@@ -37,8 +38,7 @@ class crochetDraw extends crochetLink{
         if (commands.length == 0) return []
 
         // remove invalidly formatted commands
-        const command_rgx = /[a-zA-Z\_]+(\ *\:\ *-?[0-9]+\,-?[0-9]+(\%\ *(-?[0-9]+\,-?[0-9]+)?)?)+$/
-        commands = commands.filter(c=>(c.match(command_rgx)!==null))
+        commands = commands.filter(c=>(c.match(crochetDraw.commandRegEx)!==null))
 
         // translate command string into tokenized command parameters
         let tokenized = commands
@@ -47,8 +47,8 @@ class crochetDraw extends crochetLink{
                     [res.cmd, ...res.params] = token.split(":").map(e=>e.trim()); // the ; is critical here
                     return res; // the ; is critical here
                 })
-            .filter(e=>allowedCommands.has(e.cmd)) // valid command name
-            .filter(e=>(allowedCommands.get(e.cmd)<=e.params.length)) //with enough param points
+            .filter(e => plotter.allowedCommands.has(e.cmd)) // valid command name
+            .filter(e => (plotter.allowedCommands.get(e.cmd).numPts <= e.params.length)) //with enough param points
         return tokenized
     }
 
@@ -60,7 +60,7 @@ class crochetDraw extends crochetLink{
         let parsedCmds = tokenizedCommands
             .map(token=>{
 
-                let paramVectors = token.params
+                let paramTwoVectors = token.params
                     .map(param=>{               // "a,a" | "p,p%" | "p,p % a,a"
 
                         param = "%" + param         // "%a,a" | "%p,p%" "| "%p,p % a,a"
@@ -80,15 +80,12 @@ class crochetDraw extends crochetLink{
                         // %-vector is given in perc.pts., so...
                         twoVecArray[1] = twoVecArray[1].scale(0.01)
 
-                        let twoVector = {};
-                        [twoVector.v_abs, twoVector.v_perc] = twoVecArray;
-
-                        return twoVector        // { v_abs: [vec2d], v_perc: [vec2d] }
+                        return new graphTwoVector(twoVecArray); // { vAbs: [vec2d], vPerc: [vec2d] }
 
                     })
 
                 // new token
-                return {cmd:token.cmd, params:paramVectors}
+                return new graphCommand(token.cmd, paramTwoVectors)
 
             })
 
