@@ -1,7 +1,7 @@
 import {crochetLink} from './crochetLink.js'
 import {vec2d} from '../misc/vector.js'
 import {plotter} from '../misc/graphics.js'
-import {graphTwoVector} from '../misc/graphics.js'
+import {transformationTwoVector} from '../misc/graphics.js'
 import {graphCommand} from '../misc/graphics.js'
 
 class crochetDraw extends crochetLink{
@@ -80,7 +80,7 @@ class crochetDraw extends crochetLink{
                         // %-vector is given in perc.pts., so...
                         twoVecArray[1] = twoVecArray[1].scale(0.01)
 
-                        return new graphTwoVector(twoVecArray); // { vAbs: [vec2d], vPerc: [vec2d] }
+                        return new transformationTwoVector(twoVecArray); // { vAbs: [vec2d], vPerc: [vec2d] }
 
                     })
 

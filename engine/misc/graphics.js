@@ -2,7 +2,7 @@ import {vec2d} from './vector.js'
 
 // *** these classes are jsut to make sure that the objects we parse are of proper format ***
 
-class graphTwoVector {
+class transformationTwoVector {
     constructor() {
         var args = Array.prototype.slice.call(arguments);
         let clean = [];
@@ -13,17 +13,25 @@ class graphTwoVector {
             clean =  args;
         };
         clean = clean.filter(e=>(e instanceof vec2d));
-        if (clean.length < 2) throw `graphTwoVector : not enough vectors`;
+        if (clean.length < 2) throw `transformationTwoVector : not enough vectors`;
         this.vAbs = clean[0];
         this.vPerc = clean[1];
     }
+
+    // given base parameters and two-vector parameter, returns the actual point to draw
+    calcPathPoint( base= new vec2d(1,0)){
+        let v = this.vAbs.rot(base.basePhi)
+        let u = this.vPerc.scale(base.baseLen).rot(base.basePhi)
+        return v.add(u)
+    }
+
 }
 
 class graphCommand {
     constructor(cmd, params) {
         if (typeof(cmd) != "string") throw `graphCommand : command must be a string`
-        if (!(params instanceof Array)) throw `graphCommand : params must be an Array of graphTwoVector`
-        params = params.filter(e=>(e instanceof graphTwoVector))
+        if (!(params instanceof Array)) throw `graphCommand : params must be an Array of transformationTwoVector`
+        params = params.filter(e=>(e instanceof transformationTwoVector))
         this.cmd = cmd
         this.params = params
     }
@@ -47,12 +55,7 @@ class plotter {
         return {baseOrigin: start, baseLen : baseLen, basePhi: basePhi}
     }
 
-    // given base parameters and two-vector parameter, returns the actual point to draw
-    static calcPathPoint(vecAbs = new vec2d(0,0), vecPerc = new vec2d(1,0), base= new vec2d(1,0)){
-        let v = vecAbs.rot(base.basePhi)
-        let u = vecPerc.scale(base.baseLen).rot(base.basePhi)
-        return v.add(u)
-    }
+
 
     // *** primitive SVG path (attr. d) command generators ****
 
@@ -132,7 +135,7 @@ class plotter {
         // parse each path command
         let pathSteps = pathDef.map(pathCommand=>{
             let vectors = pathCommand.params.map(
-                e => plotter.calcPathPoint(e.vAbs, e.vPerc, base)
+                e => e.calcPathPoint(base)
             )
             let {numPts, mappedCmd, funcs} = plotter.allowedCommands.get(pathCommand.cmd)
             let pathStepParts = funcs.map(
@@ -150,4 +153,4 @@ class plotter {
     }
   }
 
-export {plotter, graphTwoVector, graphCommand}
+export {plotter, transformationTwoVector, graphCommand}

@@ -10,7 +10,7 @@
       <script type ="module">
 
           import {plotter} from '../graphics.js'
-          import {graphTwoVector} from '../graphics.js'
+          import {transformationTwoVector} from '../graphics.js'
           import {graphCommand} from '../graphics.js'
           import {vec2d} from '../vector.js'
 
@@ -30,7 +30,7 @@
           base = plotter.getBase(new vec2d(1,1), new vec2d(11,1))
           let abs = new vec2d(1,5)
           let perc = new vec2d(0.2,0.3)
-          let pt = plotter.calcPathPoint(abs, perc, base)
+          let pt = new transformationTwoVector(abs , perc).calcPathPoint(base)
           log(pt)
 
           log(plotter.SVGpathResetPen(base))
@@ -41,12 +41,12 @@
 
           log(plotter.SVGpathGeneric("c", 3, [v1, v2, v3]))
 
-          let tv = new graphTwoVector([new vec2d(1,1), new vec2d(11,1)])
+          let tv = new transformationTwoVector([new vec2d(1,1), new vec2d(11,1)])
           log(tv.vAbs)
 
-          let tv1 = new graphTwoVector(new vec2d(1,1), new vec2d(0,0))
-          let tv2 = new graphTwoVector( new vec2d(0,0), new vec2d(2,3))
-          let tv3 = new graphTwoVector(new vec2d(-5,4),new vec2d(7,-8))
+          let tv1 = new transformationTwoVector(new vec2d(1,1), new vec2d(0,0))
+          let tv2 = new transformationTwoVector( new vec2d(0,0), new vec2d(2,3))
+          let tv3 = new transformationTwoVector(new vec2d(-5,4),new vec2d(7,-8))
 
           let gc1 = new graphCommand("l", [tv])
           log(`${gc1.cmd} : [${gc1.params.length}]`)
