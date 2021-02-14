@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>corchet operation factory</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {crochetOperationFactory} from '../operationFactory.js'
+          import {operationSubject} from '../operationSubject.js'
+
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          let st = "s"
+          class crochetNode {}
+          let n = new crochetNode()
+          let sub = new operationSubject([n], st, [n])
+          let x = crochetOperationFactory.getNewObject("makeorigin", sub, [])
+          let y = crochetOperationFactory.getNewObject("default", sub, [])
+          console.log(x)
+          console.log(x.exec())
+          console.log(y)
+          console.log(y.exec())
+
+      </script>
+  </body>
+</html>

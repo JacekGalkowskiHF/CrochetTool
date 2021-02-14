@@ -2,14 +2,16 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>crochet node factory</title>
+        <title>circ ref</title>
     </head>
   <body>
       <pre id="x"></pre>
 
       <script type ="module">
 
-          import {crochetNodeFactory} from '../nodeFactory.js'
+          import {a} from './a.js'
+          import {b} from './b.js'
+          import {c} from './c.js'
 
           function log(a) {
               let t = document.getElementById('x')
@@ -18,11 +20,11 @@
               t.innerHTML += '\n'
           }
 
-          let tmp = crochetNodeFactory.getNewObject("origin")
-
-          log(`${tmp} : ${tmp.getVector()}`)
-
-          tmp = crochetNodeFactory.getNewObject("start")
+          let x = new a()
+          log(x.p())
+          let y = new c()
+          log(y.q())
+          log(y.s())
 
 
       </script>
