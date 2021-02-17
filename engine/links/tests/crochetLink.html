@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>crochet link</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {crochetLink} from '../crochetLink.js'
+          import {crochetLinkExternal} from '../crochetLinkExternal.js'
+          import {crochetLinkSequential} from '../crochetLinkSequential.js'
+          import {crochetLinkZero} from '../crochetLinkZero.js'
+          import {crochetLinkCHSpace} from '../crochetLinkCHSpace.js'
+          import {crochetDraw} from '../crochetDraw.js'
+
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          let n1 = {x : 1, y : 2, registerNeighbor: ()=>{}}
+          let n2 = {x : -1, y : 3, registerNeighbor: ()=>{}}
+          let n3 = {x : -5, y : -5, registerNeighbor: ()=>{}}
+
+          let l = new crochetLink("A", n1, n2)
+          log(`${l} : type ${l.getType()}`)
+
+          l = new crochetLinkExternal("A", n1, n3)
+          log(`${l} : len ${l.getDefLen()} `)
+
+          l = new crochetLinkSequential("A", n2, n3)
+          log(`${l} : color ${l.getColor()} `)
+
+          l = new crochetLinkZero("A", n3, n1)
+          log(`${l} : ends n3 ${l.getOtherEnd(n3)} `)
+          log(`${l} : ends n2 ${l.getOtherEnd(n2)} `)
+
+          l = new crochetLinkCHSpace("A", n3, n2)
+          log(`${l} : desc ${l.getDesc()} `)
+
+
+
+
+      </script>
+  </body>
+</html>

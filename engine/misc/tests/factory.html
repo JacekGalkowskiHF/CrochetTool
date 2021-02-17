@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>crochet node factory</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {factoryClass} from '../factory.js'
+
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          class n {static getType(){return "x"}}
+
+          let x = new factoryClass(n, "getType")
+
+
+          class n1 {static getType(){return "a"}}
+
+
+          x.registerClass(n1)
+          log(x.getClass("a").name)
+          log(x.getNewObject("a").constructor.name)
+          log(x.getClass("a").name)
+
+          class n2 {static getType(){return "b"}}
+          class n3 {static getType(){return "a"}}
+
+          x.registerClass(n2)
+          x.registerClass(n3)
+
+          log(x.getClass("a").name)
+          log(x.getClass("b").name)
+
+
+          class n4 {}
+          try {x.registerClass(n4)}
+          catch(e) {log(e)}
+
+          try {
+              log(x.getClass("c").name)
+          }
+          catch(e) {log(e)}
+
+      </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Vector</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {idGenerator} from '../helpers.js'
+
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          let v1 = new idGenerator("A")
+          let v2 = new idGenerator("B")
+          log(`A : ${v1.next()}`)
+          log(`A : ${v1.next()}`)
+          log(`A : ${v1.next()}`)
+          log(`B : ${v2.next()}`)
+          log(`B : ${v2.next()}`)
+          log(`A : ${v1.next()}`)
+
+      </script>
+  </body>
+</html>

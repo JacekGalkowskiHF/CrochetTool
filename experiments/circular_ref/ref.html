@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>circ ref</title>
+    </head>
+  <body>
+      <pre id="x"></pre>
+
+      <script type ="module">
+
+          import {a} from './a.js'
+          import {b} from './b.js'
+          import {c} from './c.js'
+
+          function log(a) {
+              let t = document.getElementById('x')
+              t.innerHTML += "> "
+              t.innerHTML += a
+              t.innerHTML += '\n'
+          }
+
+          let x = new a()
+          log(x.p())
+          let y = new c()
+          log(y.q())
+          log(y.s())
+
+
+      </script>
+  </body>
+</html>
