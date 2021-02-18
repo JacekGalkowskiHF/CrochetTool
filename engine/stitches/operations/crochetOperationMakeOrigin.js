@@ -7,7 +7,11 @@ class crochetOperationMakeOrigin extends crochetOperation {
     exec() {
         let newNode, newSubject
         newSubject = this.subject.copy()
-        newNode = crochetOperation.nodeFactory.getNewObject("origin", this.subject.contextStitch, [0,0])
+        newNode = crochetOperation.nodeFactory.getNewObject(
+            "origin",
+            this.subject.contextStitch,
+            [0,0]
+        )
         newSubject.needleStack.push(newNode)
         let res = this.getBasicResult(newSubject, newNode)
         return res
