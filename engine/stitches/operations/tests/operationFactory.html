@@ -20,27 +20,81 @@
           }
 
           let st = "s"
-          class crochetNode {}
-          let n = new crochetNode()
-          let sub = new operationSubject([n], st, [n])
-          let x = crochetOperationFactory.getNewObject("makeorigin", sub, [])
-          let y = crochetOperationFactory.getNewObject("default", sub, [])
-          console.log(x)
-          console.log(x.exec())
-          console.log(y)
-          console.log(y.exec())
 
-          let n1 = x.exec().newNode
+          log("make default")
 
-          console.log(n1)
-
-          sub = new operationSubject([n1], st, [])
-          let z=crochetOperationFactory.getNewObject("mk", sub, ["external", "struct"]).exec()
-          console.log(z.newNode?1:0)
-          console.log(z.newNode)
-          console.log(z.delNode?1:0)
+          let sub = new operationSubject([], st, [])
 
 
+          let x = crochetOperationFactory.getNewObject("default", sub, [])
+          let r = x.exec()
+          log(r.newNode)
+
+          log("make origin")
+
+          x = crochetOperationFactory.getNewObject("makeorigin", sub, [])
+          r = x.exec()
+          log(`${r.newNode.getType()} : ${r.newNode.id}`)
+
+          let n1 = r.subject.needleStack[0]
+
+          log("make simple")
+
+          sub = r.subject
+
+          x =crochetOperationFactory.getNewObject("mk", sub, ["external", "struct"])
+          r = x.exec()
+          log(`new node : ${r.newNode.getType()} : ${r.newNode.id}`)
+          log(`new link : ${r.newLink.getType()} : ${r.newLink.id}`)
+          log(`del node : ${x.delNode}`)
+          log(`del link: ${x.delLink}`)
+          log(`subject : ${x.subject}`)
+
+          let n2 = r.subject.needleStack[0]
+
+          log("copy from needle ")
+
+          sub = new operationSubject([n1], st, [n2])
+          log("before")
+          log("needle: " + sub.needleStack.map(e=>e.id))
+          log("other: " + sub.otherLoops.map(e=>e.id))
+          let z1=crochetOperationFactory.getNewObject("cp", sub, ["needle"]).exec()
+          log("after")
+          log("needle: " + z1.subject.needleStack.map(e=>e.id))
+          log("other: " + z1.subject.otherLoops.map(e=>e.id))
+
+          log("copy to needle ")
+
+          sub = new operationSubject([n1], st, [n2])
+          log("before")
+          log("needle: " + sub.needleStack.map(e=>e.id))
+          log("other: " + sub.otherLoops.map(e=>e.id))
+          z1=crochetOperationFactory.getNewObject("cp", sub, ["other"]).exec()
+          log("after")
+          log("needle: " + z1.subject.needleStack.map(e=>e.id))
+          log("other: " + z1.subject.otherLoops.map(e=>e.id))
+
+          log("move from needle ")
+
+          sub = new operationSubject([n1], st, [n2])
+          log("before")
+          log("needle: " + sub.needleStack.map(e=>e.id))
+          log("other: " + sub.otherLoops.map(e=>e.id))
+          z1=crochetOperationFactory.getNewObject("mv", sub, ["needle"]).exec()
+          log("after")
+          log("needle: " + z1.subject.needleStack.map(e=>e.id))
+          log("other: " + z1.subject.otherLoops.map(e=>e.id))
+
+          log("move to needle ")
+
+          sub = new operationSubject([n1], st, [n2])
+          log("before")
+          log("needle: " + sub.needleStack.map(e=>e.id))
+          log("other: " + sub.otherLoops.map(e=>e.id))
+          z1=crochetOperationFactory.getNewObject("mv", sub, ["other"]).exec()
+          log("after")
+          log("needle: " + z1.subject.needleStack.map(e=>e.id))
+          log("other: " + z1.subject.otherLoops.map(e=>e.id))
 
       </script>
   </body>
