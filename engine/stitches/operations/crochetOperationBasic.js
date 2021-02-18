@@ -50,8 +50,9 @@ class crochetOperationBasic extends crochetOperation {
         newNode = crochetOperation.nodeFactory.getNewObject(newNodeType, this.subject.stitch, newPos);
         newLink = crochetOperation.linkFactory.getNewObject(newLinkType, this.subject.stitch, sourceNode, newNode);
         newSubject.needleStack.push(newNode);
-        let res = this.getBasicResult(newSubject, newNode, newLink)
-        return res
+
+        return this.getBasicResult(newSubject, newNode, newLink)
+
     }
 
 }
