@@ -13,6 +13,8 @@ class crochetOperationMerge extends crochetOperation {
         let targetNode, sourceNode
         let deletedLink = false
 
+        if (newSubject.needleStack.length<2) throw`crochetOperationMerge : not enough nodes on needle to merge`
+
         if (cmd == "left") {
             targetNode = newSubject.needleStack.pop()
             sourceNode = newSubject.needleStack.pop()
