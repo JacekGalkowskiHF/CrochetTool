@@ -18,7 +18,7 @@ class crochetOperationMove extends crochetOperation {
         } else if (cmd == "other")  {
             newSubject.needleStack.push( newSubject.otherLoops.pop() )
         } else {
-            throw`crochetOperationMove : Expected parameter to be 'needle' or 'copy', got '${cmd}'`
+            throw`crochetOperationMove : Expected parameter to be 'needle' or 'other', got '${cmd}'`
         }
 
         let res = this.getBasicResult(newSubject)

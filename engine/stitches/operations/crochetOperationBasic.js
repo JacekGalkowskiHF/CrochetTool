@@ -47,8 +47,8 @@ class crochetOperationBasic extends crochetOperation {
         sourceNode = newSubject.needleStack.pop();
 
         newPos = crochetOperationBasic.CALC_DEF_NEW_POS(sourceNode, newLinkType) // ??? where to put this function best ???
-        newNode = crochetOperation.nodeFactory.getNewObject(newNodeType, this.subject.stitch, newPos);
-        newLink = crochetOperation.linkFactory.getNewObject(newLinkType, this.subject.stitch, sourceNode, newNode);
+        newNode = crochetOperation.nodeFactory.getNewObject(newNodeType, this.subject.contextStitch, newPos);
+        newLink = crochetOperation.linkFactory.getNewObject(newLinkType, this.subject.contextStitch, sourceNode, newNode);
         newSubject.needleStack.push(newNode);
 
         return this.getBasicResult(newSubject, newNode, newLink)

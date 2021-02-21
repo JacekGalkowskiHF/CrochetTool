@@ -4,10 +4,13 @@ import {crochetStitch} from './crochetStitch.js'
 
 let crochetStitchFactory = new factoryClass(crochetStitch, "getType")
 
-import {} from './crochetOperationMakeOrigin.js'
+import {crochetStitchOrigin} from './crochetStitchOrigin.js'
+import {crochetStitchChain} from './crochetStitchChain.js'
+import {crochetStitchSingle} from './crochetStitchSingle.js'
 
-crochetOperationFactory
-    .registerClass(crochetOperationMakeOrigin)
-
+crochetStitchFactory
+    .registerClass(crochetStitchOrigin)
+    .registerClass(crochetStitchChain)
+    .registerClass(crochetStitchSingle)
 
 export {crochetStitchFactory}

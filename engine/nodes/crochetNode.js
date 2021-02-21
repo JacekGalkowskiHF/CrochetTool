@@ -76,7 +76,7 @@ getContext() {return this._context}
 
 // overrides the default .toString()
 toString() {
-	return '[CrochetNode ' + this.id + ']';
+	return `[node : ${this.getType()} ${this.id}]`;
 }
 
 // Returns the (x,y) position of the node as a Vector object

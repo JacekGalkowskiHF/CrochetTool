@@ -1,5 +1,4 @@
 import {idGenerator} from '../misc/helpers.js'
-import {vec2d} from '../misc/vector.js'
 import {crochetNode} from '../nodes/crochetNode.js'
 import {crochetOperationFactory} from './operations/operationFactory.js'
 import {operationSubject} from './operations/operationSubject.js'
@@ -52,7 +51,6 @@ class crochetStitch {
         let needle = []
         needle.push(attachToNode)
         let instr = ""
-
         let subject = new operationSubject(needle, this, loops)
 
         // create the stitch'es nodes and links according to the dequence
@@ -61,10 +59,11 @@ class crochetStitch {
 
             let tokens = instr.split(":").map(e=>e.trim())
             let action = tokens.shift()
+
             let op = crochetOperationFactory.getNewObject(action, subject, tokens)
             let res = op.exec()
 
-            subject = res.newSubject
+            subject = res.subject
 
             if (res.newNode) this._nodes.set(res.newNode)
             if (res.newLink) this._links.set(res.newLink)

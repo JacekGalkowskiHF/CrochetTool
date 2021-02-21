@@ -80,7 +80,7 @@ class crochetLink{
 
     // overrides the default .toString()
 	toString() {
-		return '[CrochetLink ' + this.id + ']';
+		return `[link : ${this.getType()} ${this.id}]`;
 	}
 
 	getOtherEnd( node ) {

@@ -17,8 +17,8 @@ class crochetOperationMerge extends crochetOperation {
             targetNode = newSubject.needleStack.pop()
             sourceNode = newSubject.needleStack.pop()
         } else if (cmd == "right")  {
-            source_node = newSubject.needleStack.pop()
             sourceNode = newSubject.needleStack.pop()
+            targetNode = newSubject.needleStack.pop()
         } else {
             return this.getBasicResult(newSubject)
         }
