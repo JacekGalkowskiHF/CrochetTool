@@ -22,7 +22,7 @@ class crochetOperationMerge extends crochetOperation {
             sourceNode = newSubject.needleStack.pop()
             targetNode = newSubject.needleStack.pop()
         } else {
-            return this.getBasicResult(newSubject)
+            if (cmd!="needle" && cmd!="other") throw`crochetOperationMerge : Expected direction to be 'left' or 'right', got '${cmd}'`
         }
 
         let linksToTransfer = sourceNode.getNeighborLinks()

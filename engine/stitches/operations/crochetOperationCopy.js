@@ -8,8 +8,8 @@ class crochetOperationCopy extends crochetOperation {
     exec() {
 
         let cmd = this.params[0]
-        if (cmd!="needle" && cmd!="other") throw`crochetOperationCopy : Expected parameter to be 'needle' or 'copy', got '${cmd}'`
-        
+        if (cmd!="needle" && cmd!="other") throw`crochetOperationCopy : Expected parameter to be 'needle' or 'other', got '${cmd}'`
+
         let newSubject = this.subject.copy()
         let tmp = (
             cmd == "needle"

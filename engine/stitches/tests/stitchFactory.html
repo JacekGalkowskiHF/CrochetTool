@@ -61,6 +61,26 @@
         s.getLinks().forEach(e=>(
             log(`    ${e.id} (${e.getType()}) : ${e.source.id} -> ${e.target.id}`)
         ))
+
+        log(`*** double crochet  ***`)
+
+        s = crochetStitchFactory.getNewObject("dc", "doily", n2, [n])
+        log(`nodes : ${s.getNodes()}`)
+        log(`links :`)
+        s.getLinks().forEach(e=>(
+            log(`    ${e.id} (${e.getType()}) : ${e.source.id} -> ${e.target.id}`)
+        ))
+
+        log(`*** slip stitch  ***`)
+
+        s = crochetStitchFactory.getNewObject("slst", "doily", n2, [n])
+        log(`nodes : ${s.getNodes()}`)
+        log(`links :`)
+        s.getLinks().forEach(e=>(
+            log(`    ${e.id} (${e.getType()}) : ${e.source.id} -> ${e.target.id}`)
+        ))
+
+
       </script>
   </body>
 </html>
