@@ -96,6 +96,35 @@
           log("needle: " + z1.subject.needleStack.map(e=>e.id))
           log("other: " + z1.subject.otherLoops.map(e=>e.id))
 
+          import {crochetNodeFactory} from '../../../nodes/nodeFactory.js'
+          import {crochetLinkFactory} from '../../../links/linkFactory.js'
+
+          let s = crochetNodeFactory.getNewObject("origin", "A", [0,0])
+          let s1 = crochetNodeFactory.getNewObject("origin", "A", [10,0])
+          let s2 = crochetNodeFactory.getNewObject("origin", "A", [0,10])
+          let s3 = crochetNodeFactory.getNewObject("origin", "A", [10,10])
+          let t = crochetNodeFactory.getNewObject("origin", "A", [-10,-10])
+          let t1 = crochetNodeFactory.getNewObject("origin", "A", [-10,-20])
+          let t2 = crochetNodeFactory.getNewObject("origin", "A", [-20,-10])
+          let l_s1 = crochetLinkFactory.getNewObject("sequence", "A", s, s1)
+          let l_s2 = crochetLinkFactory.getNewObject("sequence", "A", s, s2)
+          let l_s3 = crochetLinkFactory.getNewObject("sequence", "A", s, s3)
+          let l_t1 = crochetLinkFactory.getNewObject("sequence", "A", t, t1)
+          let l_t2 = crochetLinkFactory.getNewObject("sequence", "A", t, t2)
+          let l_t3 = crochetLinkFactory.getNewObject("sequence", "A", t, s3)
+          let l = crochetLinkFactory.getNewObject("sequence", "A", t, s)
+          log`before merge`
+          log(`source ${s.id} : ${s.getNeighborNodes().map(e => e.id)}`)
+          log(`target ${t.id} : ${t.getNeighborNodes().map(e => e.id)}`)
+          sub = new operationSubject([s,t], st, [])
+          x =crochetOperationFactory.getNewObject("merge", sub, ["left"])
+          r = x.exec()
+          log`after merge`
+          log(`deleted node : ${r.delNode.id}`)
+          log(`deleted link : ${r.delLink.id}`)
+          log(`source ${s.id} : ${s.getNeighborNodes().map(e => e.id)}`)
+          log(`target ${t.id} : ${t.getNeighborNodes().map(e => e.id)}`)
+
       </script>
   </body>
 </html>
