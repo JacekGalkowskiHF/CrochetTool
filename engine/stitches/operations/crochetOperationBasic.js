@@ -35,27 +35,25 @@ class crochetOperationBasic extends crochetOperation {
         }
 
         return start.add(delta);
-
-  }
     }
+
 
     exec(){
 
         let newSubject, sourceNode, newNodeType, newNode, newLinkType, newLink, newPos
 
-        [newLinkType, newNodeType] = this.params[0]
+        [newLinkType, newNodeType] = this.params
         newSubject = this.subject.copy()
         sourceNode = newSubject.needleStack.pop();
 
         newPos = crochetOperationBasic.CALC_DEF_NEW_POS(sourceNode, newLinkType) // ??? where to put this function best ???
-        newNode = crochetOperation.nodeFactory.getNewObject(newNodeType, this.subject.stitch, newPos);
-        newLink = crochetOperation.linkFactory.getNewObject(newLinkType, this.subject.stitch, sourceNode, newNode);
+        newNode = crochetOperation.nodeFactory.getNewObject(newNodeType, this.subject.contextStitch, newPos);
+        newLink = crochetOperation.linkFactory.getNewObject(newLinkType, this.subject.contextStitch, sourceNode, newNode);
         newSubject.needleStack.push(newNode);
 
-        let res = this.getBasicResult(newSubject, newNode, newLink)
-        return res
+        return this.getBasicResult(newSubject, newNode, newLink)
 
-  }
+    }
 
 }
 
