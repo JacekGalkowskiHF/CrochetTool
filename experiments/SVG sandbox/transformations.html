@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        .label:hover path {stroke-width: 2px;}
+        .label:hover circle {r: 2px; fill:white; stroke:blue; stroke-width:1.5px;}
+        .label * {transition : 0.1s}
+        .label text.fore {}
+        .label text.back {opacity : 0.7; text-shadow: 0px 0px 10px white;}
+        .label:hover text.back {opacity : 1; stroke-width: 6; text-shadow: 0px 0px 10px white;}
+    </style>
+<body>
+
+<h1>My first SVG</h1>
+
+<svg width="800" height="500" style="border : 1px black solid"  >
+    <g class="svg_container" transform="rotate(35 200 100)" >
+        <path d="M 100 100 l 0 100 l 10 0 l 0 -10 " stroke="green" stroke-width="4" fill="none"/>
+        <path d="M 200 100 l 100 0 l 0 -10 l -10 0 " stroke="red" stroke-width="4" fill="none"/>
+
+        <g transform="translate(200,300) rotate(-35)" class="label">
+            <rect x=17 y=-10 height = 20 width = 100 fill=black />
+            <text x = 20 y = 0 dominant-baseline="middle" fill = white stroke=white stroke-width=4 stroke-linejoin=round class="back">lorem ipsum </text>
+            <text x = 20 y = 0 dominant-baseline="middle" class="fore">lorem ipsum </text>
+            <path d="M 0 0 l 17 0 m 0 -8 v 15" stroke="blue" stroke-width ="1" fill="none"/>
+            <circle cx =0 cy = 0 r=1 fill=blue stroke=blue stroke-width =1 />
+        </g>
+
+    </g>Sorry, your browser does not support inline SVG.
+</svg>
+
+</body>
+</html>
